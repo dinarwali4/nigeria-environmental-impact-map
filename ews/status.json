@@ -1,0 +1,241 @@
+{
+ "run_utc": "2026-10-04T08:44:17Z",
+ "freshness": {
+  "wn3": {
+   "time": "2026-10-03T18:00:00Z",
+   "age_h": 14.7,
+   "fresh": true,
+   "error": null
+  },
+  "imerg": {
+   "time": "2026-10-02T04:30:00Z",
+   "age_h": 52.2,
+   "fresh": true,
+   "error": null
+  },
+  "radd": {
+   "time": "2026-09-23T00:00:00Z",
+   "age_h": 272.7,
+   "fresh": true,
+   "error": null
+  },
+  "s1:osogbo": {
+   "time": "2026-09-28T05:28:45Z",
+   "age_h": 147.3,
+   "fresh": true
+  }
+ },
+ "sites": {
+  "flood:mokwa": {
+   "kind": "flood",
+   "level": "none",
+   "raw_level": "none",
+   "held": false,
+   "why": [],
+   "wn3_days": [
+    {
+     "mean": 9.1,
+     "imerg_mean": 7.0,
+     "p50": 1.2,
+     "hi_env": 28.6,
+     "lo_env": 0.0,
+     "hours": 24,
+     "date": "2026-10-04"
+    },
+    {
+     "mean": 6.9,
+     "imerg_mean": 11.3,
+     "p50": 0.5,
+     "hi_env": 20.1,
+     "lo_env": 0.0,
+     "hours": 24,
+     "date": "2026-10-05"
+    },
+    {
+     "mean": 4.3,
+     "imerg_mean": 8.6,
+     "p50": 0.1,
+     "hi_env": 8.0,
+     "lo_env": 0.0,
+     "hours": 24,
+     "date": "2026-10-06"
+    }
+   ],
+   "s1": null,
+   "s1_fresh": false
+  },
+  "flood:osogbo": {
+   "kind": "flood",
+   "level": "none",
+   "raw_level": "none",
+   "held": false,
+   "why": [
+    "radar: 6.5 ha open water vs 0.5 ha baseline \u2014 observed 147 h ago, too old to call an alert; awaiting next pass"
+   ],
+   "wn3_days": [
+    {
+     "mean": 3.5,
+     "imerg_mean": 4.0,
+     "p50": 1.0,
+     "hi_env": 8.5,
+     "lo_env": 0.1,
+     "hours": 24,
+     "date": "2026-10-04"
+    },
+    {
+     "mean": 6.5,
+     "imerg_mean": 9.7,
+     "p50": 1.4,
+     "hi_env": 17.6,
+     "lo_env": 0.0,
+     "hours": 24,
+     "date": "2026-10-05"
+    },
+    {
+     "mean": 5.7,
+     "imerg_mean": 9.2,
+     "p50": 0.9,
+     "hi_env": 13.4,
+     "lo_env": 0.0,
+     "hours": 24,
+     "date": "2026-10-06"
+    }
+   ],
+   "s1": {
+    "time": "2026-09-28T05:28:45Z",
+    "water_ha": 6.46,
+    "baseline_ha": 0.5
+   },
+   "s1_fresh": true
+  },
+  "erosion:okigwe": {
+   "kind": "erosion",
+   "level": "none",
+   "raw_level": "none",
+   "held": false,
+   "why": [],
+   "wn3_days": [
+    {
+     "mean": 6.4,
+     "imerg_mean": 3.2,
+     "p50": 1.5,
+     "hi_env": 16.1,
+     "lo_env": 0.2,
+     "hours": 24,
+     "date": "2026-10-04"
+    },
+    {
+     "mean": 12.1,
+     "imerg_mean": 12.1,
+     "p50": 4.7,
+     "hi_env": 30.9,
+     "lo_env": 0.4,
+     "hours": 24,
+     "date": "2026-10-05"
+    },
+    {
+     "mean": 12.2,
+     "imerg_mean": 13.8,
+     "p50": 2.7,
+     "hi_env": 34.7,
+     "lo_env": 0.1,
+     "hours": 24,
+     "date": "2026-10-06"
+    }
+   ]
+  },
+  "erosion:ideato": {
+   "kind": "erosion",
+   "level": "none",
+   "raw_level": "none",
+   "held": false,
+   "why": [],
+   "wn3_days": [
+    {
+     "mean": 7.0,
+     "imerg_mean": 2.9,
+     "p50": 1.5,
+     "hi_env": 17.9,
+     "lo_env": 0.2,
+     "hours": 24,
+     "date": "2026-10-04"
+    },
+    {
+     "mean": 12.3,
+     "imerg_mean": 10.7,
+     "p50": 4.1,
+     "hi_env": 33.2,
+     "lo_env": 0.6,
+     "hours": 24,
+     "date": "2026-10-05"
+    },
+    {
+     "mean": 12.4,
+     "imerg_mean": 13.4,
+     "p50": 3.2,
+     "hi_env": 35.6,
+     "lo_env": 0.2,
+     "hours": 24,
+     "date": "2026-10-06"
+    }
+   ]
+  },
+  "forest:oban": {
+   "kind": "forest",
+   "level": "watch",
+   "raw_level": "watch",
+   "held": false,
+   "why": [
+    "24 ha new radar forest-loss alerts in reserve (last 30 d)"
+   ],
+   "new_30d_ha": 23.7
+  },
+  "forest:omo": {
+   "kind": "forest",
+   "level": "none",
+   "raw_level": "none",
+   "held": false,
+   "why": [],
+   "new_30d_ha": 0.5
+  },
+  "forest:okomu": {
+   "kind": "forest",
+   "level": "none",
+   "raw_level": "none",
+   "held": false,
+   "why": [],
+   "new_30d_ha": 0.7
+  }
+ },
+ "imerg_last7d_mm": {
+  "mokwa": 65.9,
+  "osogbo": 70.0,
+  "okigwe": 63.0,
+  "ideato": 70.7,
+  "obolo": 72.3,
+  "oban": 130.7
+ },
+ "radd_image": "africa_20260923",
+ "rules": {
+  "flood": {
+   "env_watch_mm": 40.0,
+   "mean_warning_mm": 20.0,
+   "water_ratio_alert": 3.0,
+   "water_min_ha": 2.0
+  },
+  "forest": {
+   "new_ha_watch": 10.0,
+   "new_ha_warning": 50.0
+  },
+  "erosion": {
+   "rain3d_watch_mm": 50.0
+  },
+  "downgrade_after_runs": 2,
+  "max_age_h": {
+   "wn3": 30,
+   "imerg": 96,
+   "s1": 168,
+   "radd": 336
+  }
+ }
+}

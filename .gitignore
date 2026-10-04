@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+ews/state.json
+.DS_Store
+*.tif
+*.nc

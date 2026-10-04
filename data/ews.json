@@ -1,0 +1,1157 @@
+{
+ "status": {
+  "run_utc": "2026-10-04T08:44:17Z",
+  "freshness": {
+   "wn3": {
+    "time": "2026-10-03T18:00:00Z",
+    "age_h": 14.7,
+    "fresh": true,
+    "error": null
+   },
+   "imerg": {
+    "time": "2026-10-02T04:30:00Z",
+    "age_h": 52.2,
+    "fresh": true,
+    "error": null
+   },
+   "radd": {
+    "time": "2026-09-23T00:00:00Z",
+    "age_h": 272.7,
+    "fresh": true,
+    "error": null
+   },
+   "s1:osogbo": {
+    "time": "2026-09-28T05:28:45Z",
+    "age_h": 147.3,
+    "fresh": true
+   }
+  },
+  "sites": {
+   "flood:mokwa": {
+    "kind": "flood",
+    "level": "none",
+    "raw_level": "none",
+    "held": false,
+    "why": [],
+    "wn3_days": [
+     {
+      "mean": 9.1,
+      "imerg_mean": 7.0,
+      "p50": 1.2,
+      "hi_env": 28.6,
+      "lo_env": 0.0,
+      "hours": 24,
+      "date": "2026-10-04"
+     },
+     {
+      "mean": 6.9,
+      "imerg_mean": 11.3,
+      "p50": 0.5,
+      "hi_env": 20.1,
+      "lo_env": 0.0,
+      "hours": 24,
+      "date": "2026-10-05"
+     },
+     {
+      "mean": 4.3,
+      "imerg_mean": 8.6,
+      "p50": 0.1,
+      "hi_env": 8.0,
+      "lo_env": 0.0,
+      "hours": 24,
+      "date": "2026-10-06"
+     }
+    ],
+    "s1": null,
+    "s1_fresh": false
+   },
+   "flood:osogbo": {
+    "kind": "flood",
+    "level": "none",
+    "raw_level": "none",
+    "held": false,
+    "why": [
+     "radar: 6.5 ha open water vs 0.5 ha baseline \u2014 observed 147 h ago, too old to call an alert; awaiting next pass"
+    ],
+    "wn3_days": [
+     {
+      "mean": 3.5,
+      "imerg_mean": 4.0,
+      "p50": 1.0,
+      "hi_env": 8.5,
+      "lo_env": 0.1,
+      "hours": 24,
+      "date": "2026-10-04"
+     },
+     {
+      "mean": 6.5,
+      "imerg_mean": 9.7,
+      "p50": 1.4,
+      "hi_env": 17.6,
+      "lo_env": 0.0,
+      "hours": 24,
+      "date": "2026-10-05"
+     },
+     {
+      "mean": 5.7,
+      "imerg_mean": 9.2,
+      "p50": 0.9,
+      "hi_env": 13.4,
+      "lo_env": 0.0,
+      "hours": 24,
+      "date": "2026-10-06"
+     }
+    ],
+    "s1": {
+     "time": "2026-09-28T05:28:45Z",
+     "water_ha": 6.46,
+     "baseline_ha": 0.5
+    },
+    "s1_fresh": true
+   },
+   "erosion:okigwe": {
+    "kind": "erosion",
+    "level": "none",
+    "raw_level": "none",
+    "held": false,
+    "why": [],
+    "wn3_days": [
+     {
+      "mean": 6.4,
+      "imerg_mean": 3.2,
+      "p50": 1.5,
+      "hi_env": 16.1,
+      "lo_env": 0.2,
+      "hours": 24,
+      "date": "2026-10-04"
+     },
+     {
+      "mean": 12.1,
+      "imerg_mean": 12.1,
+      "p50": 4.7,
+      "hi_env": 30.9,
+      "lo_env": 0.4,
+      "hours": 24,
+      "date": "2026-10-05"
+     },
+     {
+      "mean": 12.2,
+      "imerg_mean": 13.8,
+      "p50": 2.7,
+      "hi_env": 34.7,
+      "lo_env": 0.1,
+      "hours": 24,
+      "date": "2026-10-06"
+     }
+    ]
+   },
+   "erosion:ideato": {
+    "kind": "erosion",
+    "level": "none",
+    "raw_level": "none",
+    "held": false,
+    "why": [],
+    "wn3_days": [
+     {
+      "mean": 7.0,
+      "imerg_mean": 2.9,
+      "p50": 1.5,
+      "hi_env": 17.9,
+      "lo_env": 0.2,
+      "hours": 24,
+      "date": "2026-10-04"
+     },
+     {
+      "mean": 12.3,
+      "imerg_mean": 10.7,
+      "p50": 4.1,
+      "hi_env": 33.2,
+      "lo_env": 0.6,
+      "hours": 24,
+      "date": "2026-10-05"
+     },
+     {
+      "mean": 12.4,
+      "imerg_mean": 13.4,
+      "p50": 3.2,
+      "hi_env": 35.6,
+      "lo_env": 0.2,
+      "hours": 24,
+      "date": "2026-10-06"
+     }
+    ]
+   },
+   "forest:oban": {
+    "kind": "forest",
+    "level": "watch",
+    "raw_level": "watch",
+    "held": false,
+    "why": [
+     "24 ha new radar forest-loss alerts in reserve (last 30 d)"
+    ],
+    "new_30d_ha": 23.7
+   },
+   "forest:omo": {
+    "kind": "forest",
+    "level": "none",
+    "raw_level": "none",
+    "held": false,
+    "why": [],
+    "new_30d_ha": 0.5
+   },
+   "forest:okomu": {
+    "kind": "forest",
+    "level": "none",
+    "raw_level": "none",
+    "held": false,
+    "why": [],
+    "new_30d_ha": 0.7
+   }
+  },
+  "imerg_last7d_mm": {
+   "mokwa": 65.9,
+   "osogbo": 70.0,
+   "okigwe": 63.0,
+   "ideato": 70.7,
+   "obolo": 72.3,
+   "oban": 130.7
+  },
+  "radd_image": "africa_20260923",
+  "rules": {
+   "flood": {
+    "env_watch_mm": 40.0,
+    "mean_warning_mm": 20.0,
+    "water_ratio_alert": 3.0,
+    "water_min_ha": 2.0
+   },
+   "forest": {
+    "new_ha_watch": 10.0,
+    "new_ha_warning": 50.0
+   },
+   "erosion": {
+    "rain3d_watch_mm": 50.0
+   },
+   "downgrade_after_runs": 2,
+   "max_age_h": {
+    "wn3": 30,
+    "imerg": 96,
+    "s1": 168,
+    "radd": 336
+   }
+  }
+ },
+ "wn3": {
+  "init": "2026-10-03T18:00:00Z",
+  "sites": {
+   "mokwa": {
+    "name": "Mokwa (town + upstream 15 km)",
+    "daily": [
+     {
+      "date": "2026-10-04",
+      "mean": 9.1,
+      "p50": 1.2,
+      "hi_env": 28.6,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-05",
+      "mean": 6.9,
+      "p50": 0.5,
+      "hi_env": 20.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-06",
+      "mean": 4.3,
+      "p50": 0.1,
+      "hi_env": 8.0,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-07",
+      "mean": 4.3,
+      "p50": 0.1,
+      "hi_env": 7.9,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-08",
+      "mean": 2.5,
+      "p50": 0.0,
+      "hi_env": 6.7,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-09",
+      "mean": 0.4,
+      "p50": 0.0,
+      "hi_env": 0.4,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-10",
+      "mean": 0.4,
+      "p50": 0.0,
+      "hi_env": 0.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-11",
+      "mean": 0.1,
+      "p50": 0.0,
+      "hi_env": 0.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-12",
+      "mean": 0.2,
+      "p50": 0.0,
+      "hi_env": 0.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-13",
+      "mean": 0.7,
+      "p50": 0.0,
+      "hi_env": 0.3,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-14",
+      "mean": 1.0,
+      "p50": 0.0,
+      "hi_env": 0.2,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-15",
+      "mean": 0.2,
+      "p50": 0.0,
+      "hi_env": 0.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-16",
+      "mean": 0.2,
+      "p50": 0.0,
+      "hi_env": 0.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-17",
+      "mean": 0.5,
+      "p50": 0.0,
+      "hi_env": 0.1,
+      "lo_env": 0.0,
+      "hours": 24
+     }
+    ]
+   },
+   "osogbo": {
+    "name": "Osogbo / upper Osun (25 km)",
+    "daily": [
+     {
+      "date": "2026-10-04",
+      "mean": 3.5,
+      "p50": 1.0,
+      "hi_env": 8.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-05",
+      "mean": 6.5,
+      "p50": 1.4,
+      "hi_env": 17.6,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-06",
+      "mean": 5.7,
+      "p50": 0.9,
+      "hi_env": 13.4,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-07",
+      "mean": 6.2,
+      "p50": 1.4,
+      "hi_env": 17.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-08",
+      "mean": 3.0,
+      "p50": 0.3,
+      "hi_env": 6.3,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-09",
+      "mean": 2.4,
+      "p50": 0.1,
+      "hi_env": 6.6,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-10",
+      "mean": 2.4,
+      "p50": 0.4,
+      "hi_env": 5.6,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-11",
+      "mean": 3.5,
+      "p50": 0.6,
+      "hi_env": 9.9,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-12",
+      "mean": 2.6,
+      "p50": 0.5,
+      "hi_env": 7.3,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-13",
+      "mean": 4.1,
+      "p50": 0.5,
+      "hi_env": 12.3,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-14",
+      "mean": 3.9,
+      "p50": 0.4,
+      "hi_env": 11.6,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-15",
+      "mean": 4.4,
+      "p50": 0.3,
+      "hi_env": 13.2,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-16",
+      "mean": 3.9,
+      "p50": 0.3,
+      "hi_env": 9.8,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-17",
+      "mean": 2.2,
+      "p50": 0.3,
+      "hi_env": 4.9,
+      "lo_env": 0.0,
+      "hours": 24
+     }
+    ]
+   },
+   "okigwe": {
+    "name": "Okigwe escarpment gullies",
+    "daily": [
+     {
+      "date": "2026-10-04",
+      "mean": 6.4,
+      "p50": 1.5,
+      "hi_env": 16.1,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-05",
+      "mean": 12.1,
+      "p50": 4.7,
+      "hi_env": 30.9,
+      "lo_env": 0.4,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-06",
+      "mean": 12.2,
+      "p50": 2.7,
+      "hi_env": 34.7,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-07",
+      "mean": 13.6,
+      "p50": 3.0,
+      "hi_env": 42.1,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-08",
+      "mean": 8.8,
+      "p50": 2.5,
+      "hi_env": 21.0,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-09",
+      "mean": 6.7,
+      "p50": 0.6,
+      "hi_env": 17.5,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-10",
+      "mean": 7.0,
+      "p50": 1.2,
+      "hi_env": 18.2,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-11",
+      "mean": 6.6,
+      "p50": 1.1,
+      "hi_env": 17.2,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-12",
+      "mean": 7.0,
+      "p50": 1.0,
+      "hi_env": 19.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-13",
+      "mean": 7.3,
+      "p50": 1.1,
+      "hi_env": 19.7,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-14",
+      "mean": 7.8,
+      "p50": 1.0,
+      "hi_env": 20.1,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-15",
+      "mean": 7.1,
+      "p50": 0.8,
+      "hi_env": 18.7,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-16",
+      "mean": 4.9,
+      "p50": 0.6,
+      "hi_env": 12.3,
+      "lo_env": 0.0,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-17",
+      "mean": 7.4,
+      "p50": 0.8,
+      "hi_env": 19.4,
+      "lo_env": 0.1,
+      "hours": 24
+     }
+    ]
+   },
+   "ideato": {
+    "name": "Obodo, Ideato North gully",
+    "daily": [
+     {
+      "date": "2026-10-04",
+      "mean": 7.0,
+      "p50": 1.5,
+      "hi_env": 17.9,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-05",
+      "mean": 12.3,
+      "p50": 4.1,
+      "hi_env": 33.2,
+      "lo_env": 0.6,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-06",
+      "mean": 12.4,
+      "p50": 3.2,
+      "hi_env": 35.6,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-07",
+      "mean": 14.3,
+      "p50": 3.0,
+      "hi_env": 42.7,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-08",
+      "mean": 9.1,
+      "p50": 2.9,
+      "hi_env": 22.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-09",
+      "mean": 6.7,
+      "p50": 0.9,
+      "hi_env": 18.9,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-10",
+      "mean": 7.7,
+      "p50": 1.4,
+      "hi_env": 21.1,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-11",
+      "mean": 7.3,
+      "p50": 1.6,
+      "hi_env": 18.6,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-12",
+      "mean": 6.3,
+      "p50": 1.0,
+      "hi_env": 16.4,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-13",
+      "mean": 7.4,
+      "p50": 1.3,
+      "hi_env": 18.3,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-14",
+      "mean": 8.9,
+      "p50": 1.2,
+      "hi_env": 24.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-15",
+      "mean": 7.2,
+      "p50": 1.0,
+      "hi_env": 18.9,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-16",
+      "mean": 6.2,
+      "p50": 1.0,
+      "hi_env": 15.9,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-17",
+      "mean": 7.9,
+      "p50": 1.0,
+      "hi_env": 21.0,
+      "lo_env": 0.1,
+      "hours": 24
+     }
+    ]
+   },
+   "obolo": {
+    "name": "Obolo, Isiala Mbano (brief pt)",
+    "daily": [
+     {
+      "date": "2026-10-04",
+      "mean": 6.6,
+      "p50": 1.9,
+      "hi_env": 18.0,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-05",
+      "mean": 11.9,
+      "p50": 4.8,
+      "hi_env": 29.9,
+      "lo_env": 0.5,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-06",
+      "mean": 12.2,
+      "p50": 3.0,
+      "hi_env": 35.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-07",
+      "mean": 14.5,
+      "p50": 3.4,
+      "hi_env": 44.2,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-08",
+      "mean": 8.8,
+      "p50": 2.5,
+      "hi_env": 22.1,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-09",
+      "mean": 7.4,
+      "p50": 1.1,
+      "hi_env": 18.4,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-10",
+      "mean": 8.8,
+      "p50": 1.4,
+      "hi_env": 24.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-11",
+      "mean": 8.5,
+      "p50": 2.1,
+      "hi_env": 22.8,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-12",
+      "mean": 8.1,
+      "p50": 1.2,
+      "hi_env": 24.7,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-13",
+      "mean": 8.4,
+      "p50": 1.7,
+      "hi_env": 22.7,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-14",
+      "mean": 9.5,
+      "p50": 1.5,
+      "hi_env": 25.1,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-15",
+      "mean": 7.7,
+      "p50": 1.1,
+      "hi_env": 20.0,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-16",
+      "mean": 6.8,
+      "p50": 1.0,
+      "hi_env": 17.4,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-17",
+      "mean": 8.3,
+      "p50": 1.1,
+      "hi_env": 23.1,
+      "lo_env": 0.1,
+      "hours": 24
+     }
+    ]
+   },
+   "oban": {
+    "name": "Oban / Cross River",
+    "daily": [
+     {
+      "date": "2026-10-04",
+      "mean": 8.4,
+      "p50": 3.1,
+      "hi_env": 22.0,
+      "lo_env": 0.4,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-05",
+      "mean": 16.7,
+      "p50": 4.7,
+      "hi_env": 47.5,
+      "lo_env": 0.5,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-06",
+      "mean": 11.5,
+      "p50": 3.1,
+      "hi_env": 32.0,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-07",
+      "mean": 18.1,
+      "p50": 5.3,
+      "hi_env": 47.7,
+      "lo_env": 0.5,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-08",
+      "mean": 9.4,
+      "p50": 2.6,
+      "hi_env": 24.0,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-09",
+      "mean": 10.0,
+      "p50": 2.3,
+      "hi_env": 27.3,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-10",
+      "mean": 9.4,
+      "p50": 1.6,
+      "hi_env": 25.5,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-11",
+      "mean": 12.4,
+      "p50": 2.9,
+      "hi_env": 34.4,
+      "lo_env": 0.3,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-12",
+      "mean": 13.6,
+      "p50": 2.7,
+      "hi_env": 38.1,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-13",
+      "mean": 12.3,
+      "p50": 2.5,
+      "hi_env": 31.7,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-14",
+      "mean": 11.4,
+      "p50": 1.9,
+      "hi_env": 32.8,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-15",
+      "mean": 10.7,
+      "p50": 2.1,
+      "hi_env": 31.9,
+      "lo_env": 0.2,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-16",
+      "mean": 9.3,
+      "p50": 1.8,
+      "hi_env": 25.6,
+      "lo_env": 0.1,
+      "hours": 24
+     },
+     {
+      "date": "2026-10-17",
+      "mean": 10.8,
+      "p50": 1.9,
+      "hi_env": 27.9,
+      "lo_env": 0.1,
+      "hours": 24
+     }
+    ]
+   }
+  }
+ },
+ "verification": [
+  {
+   "lead": 1,
+   "n": 138,
+   "mae_wn3": 7.9,
+   "mae_wn3_imerg": 5.6,
+   "mae_clim": 8.6,
+   "heavy_days": 23,
+   "non_heavy": 115,
+   "warn_hits": 16,
+   "warn_fa": 9,
+   "watch_hits": 13,
+   "watch_fa": 34
+  },
+  {
+   "lead": 2,
+   "n": 126,
+   "mae_wn3": 7.6,
+   "mae_wn3_imerg": 7.1,
+   "mae_clim": 8.8,
+   "heavy_days": 22,
+   "non_heavy": 104,
+   "warn_hits": 3,
+   "warn_fa": 6,
+   "watch_hits": 12,
+   "watch_fa": 23
+  },
+  {
+   "lead": 3,
+   "n": 114,
+   "mae_wn3": 8.0,
+   "mae_wn3_imerg": 7.3,
+   "mae_clim": 8.9,
+   "heavy_days": 19,
+   "non_heavy": 95,
+   "warn_hits": 2,
+   "warn_fa": 7,
+   "watch_hits": 13,
+   "watch_fa": 25
+  }
+ ],
+ "osogbo": {
+  "obs_imerg_mm": 48.2,
+  "forecasts": [
+   {
+    "init": "2026-09-21T00:00:00Z",
+    "lead_days": 7.0,
+    "hours": 24,
+    "mean": 11.3,
+    "hi_env": 27.1,
+    "imerg_flavour": 10.8
+   },
+   {
+    "init": "2026-09-22T00:00:00Z",
+    "lead_days": 6.0,
+    "hours": 24,
+    "mean": 17.7,
+    "hi_env": 48.0,
+    "imerg_flavour": 12.6
+   },
+   {
+    "init": "2026-09-23T00:00:00Z",
+    "lead_days": 5.0,
+    "hours": 24,
+    "mean": 16.5,
+    "hi_env": 43.0,
+    "imerg_flavour": 13.1
+   },
+   {
+    "init": "2026-09-24T00:00:00Z",
+    "lead_days": 4.0,
+    "hours": 24,
+    "mean": 16.8,
+    "hi_env": 43.9,
+    "imerg_flavour": 13.7
+   },
+   {
+    "init": "2026-09-25T00:00:00Z",
+    "lead_days": 3.0,
+    "hours": 24,
+    "mean": 18.8,
+    "hi_env": 51.1,
+    "imerg_flavour": 18.0
+   },
+   {
+    "init": "2026-09-26T00:00:00Z",
+    "lead_days": 2.0,
+    "hours": 24,
+    "mean": 23.9,
+    "hi_env": 56.2,
+    "imerg_flavour": 23.5
+   },
+   {
+    "init": "2026-09-27T00:00:00Z",
+    "lead_days": 1.0,
+    "hours": 24,
+    "mean": 23.6,
+    "hi_env": 51.8,
+    "imerg_flavour": 24.1
+   },
+   {
+    "init": "2026-09-27T12:00:00Z",
+    "lead_days": 0.5,
+    "hours": 24,
+    "mean": 26.7,
+    "hi_env": 67.4,
+    "imerg_flavour": 33.9
+   }
+  ]
+ },
+ "backtest": {
+  "n_events": 700,
+  "n_controls": 2100,
+  "auc_r1": 0.587,
+  "auc_r3": 0.591,
+  "thresholds": [
+   {
+    "t": 10,
+    "hit": 0.649,
+    "false_alarm": 0.539
+   },
+   {
+    "t": 20,
+    "hit": 0.417,
+    "false_alarm": 0.302
+   },
+   {
+    "t": 30,
+    "hit": 0.221,
+    "false_alarm": 0.143
+   },
+   {
+    "t": 40,
+    "hit": 0.13,
+    "false_alarm": 0.073
+   },
+   {
+    "t": 50,
+    "hit": 0.084,
+    "false_alarm": 0.034
+   },
+   {
+    "t": 60,
+    "hit": 0.049,
+    "false_alarm": 0.017
+   }
+  ],
+  "auc_r1_wet": 0.587
+ },
+ "floodhub": [
+  {
+   "gauge": "Hadejia at Wudil",
+   "grdc": 1837410,
+   "google_nse": 0.42,
+   "glofas_nse": 0.07,
+   "google_kge": 0.42,
+   "glofas_kge": 0.55
+  },
+  {
+   "gauge": "Jamaare at Katagum",
+   "grdc": 1837250,
+   "google_nse": 0.15,
+   "glofas_nse": 0.08,
+   "google_kge": 0.15,
+   "glofas_kge": 0.48
+  },
+  {
+   "gauge": "Jamaare at Bunga",
+   "grdc": 1837255,
+   "google_nse": 0.02,
+   "glofas_nse": 0.23,
+   "google_kge": -0.2,
+   "glofas_kge": 0.57
+  },
+  {
+   "gauge": "Kano at Chiromawa",
+   "grdc": 1837430,
+   "google_nse": -0.19,
+   "glofas_nse": 0.12,
+   "google_kge": -0.15,
+   "glofas_kge": 0.4
+  },
+  {
+   "gauge": "Challawa Gorge (dam)",
+   "grdc": 1837451,
+   "google_nse": -0.69,
+   "glofas_nse": -0.89,
+   "google_kge": -0.01,
+   "glofas_kge": -0.07
+  },
+  {
+   "gauge": "Kano at Tiga Dam",
+   "grdc": 1837431,
+   "google_nse": -4.85,
+   "glofas_nse": -11.79,
+   "google_kge": -0.39,
+   "glofas_kge": -1.39
+  },
+  {
+   "gauge": "Komadugu Gana at Dapchi",
+   "grdc": 1837200,
+   "google_nse": -274.68,
+   "glofas_nse": -1.04,
+   "google_kge": -13.92,
+   "glofas_kge": 0.21
+  }
+ ]
+}

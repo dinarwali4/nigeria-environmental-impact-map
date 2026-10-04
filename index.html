@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nigeria Environmental Impact Map</title>
+<meta name="description" content="Three-layer environmental risk map of Nigeria: flash floods (Mokwa, Osogbo), gully erosion (Imo), canopy loss (Oban, Omo, Okomu). Designed by Mr. Dinar Wali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ---- Leaflet 1.9.4 core CSS (inlined: the artifact CSP blocks external stylesheets) ---- */
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;-webkit-tap-highlight-color:transparent;outline-offset:1px;font-family:inherit}
+.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important}
+.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}
+.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}
+.leaflet-container.leaflet-touch-zoom{touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{touch-action:none}
+.leaflet-pane{z-index:400}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
+.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}
+.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto;float:left;clear:both}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}
+.leaflet-right .leaflet-control{float:right;margin-right:10px}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}
+.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}
+.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}
+.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:grab}.leaflet-dragging .leaflet-grab{cursor:move}
+.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.45);border-radius:4px}
+.leaflet-bar a{background:var(--panel);color:var(--ink);border-bottom:1px solid var(--line);width:30px;height:30px;line-height:30px;display:block;text-align:center;text-decoration:none;font:600 18px/30px var(--sans)}
+.leaflet-bar a:first-child{border-radius:4px 4px 0 0}.leaflet-bar a:last-child{border-radius:0 0 4px 4px;border-bottom:none}
+.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}
+.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:8px;background:var(--panel);color:var(--ink);box-shadow:0 3px 14px rgba(0,0,0,.4)}
+.leaflet-popup-content{margin:12px 16px;line-height:1.4;font-size:13px;min-height:1px}
+.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}
+.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;transform:rotate(45deg);background:var(--panel)}
+.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:var(--muted);text-decoration:none}
+.leaflet-control-scale-line{border:2px solid var(--ink);border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;box-sizing:border-box;background:color-mix(in srgb,var(--panel) 80%,transparent);font:11px var(--mono);color:var(--ink)}
+.leaflet-tooltip{position:absolute;padding:4px 8px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:4px;white-space:nowrap;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4);font-size:12px}
+.leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{display:none}
+
+/* ---- Page tokens ---- */
+:root{
+  --bg:#EEF1EC; --panel:#FFFFFF; --ink:#16231C; --muted:#56655C; --line:#D3DBD4;
+  --laterite:#A94A24; --water:#13729C; --forest:#2C6E3A; --alert:#B07A00;
+  --map:#0E1A15;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1512; --panel:#16201B; --ink:#E3EAE5; --muted:#9AAAA0; --line:#2A3832;
+  --laterite:#E07A4E; --water:#4FB3DD; --forest:#6CC07E; --alert:#E6B13A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1512; --panel:#16201B; --ink:#E3EAE5; --muted:#9AAAA0; --line:#2A3832;
+  --laterite:#E07A4E; --water:#4FB3DD; --forest:#6CC07E; --alert:#E6B13A; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);margin:0}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:20px;padding-block:24px 48px}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5vw,56px);line-height:1}
+h2{font-size:30px;line-height:1.1}
+h3{font-size:21px;line-height:1.15}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:var(--water)}
+p{margin:0}
+.muted{color:var(--muted)}
+
+/* header */
+header.top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:18px;border-bottom:2px solid var(--ink)}
+header.top .lede{max-width:72ch;margin-top:10px;color:var(--muted)}
+.byline{text-align:right;font-size:13px;line-height:1.45}
+.byline b{font-family:var(--display);font-size:19px;font-weight:600;display:block;color:var(--ink)}
+@media (max-width:760px){header.top{grid-template-columns:1fr}.byline{text-align:left}}
+
+/* map block */
+.mapblock{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0;margin-top:22px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+#map{height:640px;background:var(--map)}
+.side{border-left:1px solid var(--line);display:flex;flex-direction:column;max-height:640px}
+.side .tabs{display:flex;border-bottom:1px solid var(--line)}
+.side .tabs button{flex:1;background:none;border:0;border-bottom:3px solid transparent;padding:12px 6px 9px;font:600 15px var(--display);letter-spacing:.03em;color:var(--muted);cursor:pointer}
+.side .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent,var(--ink))}
+.side .tabs button:focus-visible{outline:2px solid var(--water);outline-offset:-2px}
+.side .pane{overflow:auto;padding:16px 18px 20px;display:flex;flex-direction:column;gap:14px}
+.side .pane h3{display:flex;align-items:baseline;gap:8px}
+.chip{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;border:1px solid currentColor;white-space:nowrap}
+.chip.ok{color:var(--forest)}.chip.warn{color:var(--alert)}.chip.no{color:var(--laterite)}
+.site{display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid var(--line)}
+.site:first-of-type{border-top:0;padding-top:0}
+.site button.fly{align-self:flex-start;background:none;border:1px solid var(--line);border-radius:4px;padding:3px 9px;font:500 12px var(--mono);color:var(--ink);cursor:pointer}
+.site button.fly:hover,.site button.fly:focus-visible{border-color:var(--ink)}
+dl.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:13px}
+dl.kv dt{color:var(--muted)}dl.kv dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.toggles{display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 14px;border-top:1px solid var(--line);font-size:13px}
+.toggles label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.sw{display:inline-block;width:14px;height:14px;border-radius:2px;border:2px solid}
+@media (max-width:980px){.mapblock{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid var(--line);max-height:none}#map{height:62vh;min-height:380px}}
+
+/* legend control on map */
+.legend{background:color-mix(in srgb,var(--panel) 92%,transparent);color:var(--ink);padding:10px 12px;border-radius:6px;font-size:12px;line-height:1.5;box-shadow:0 1px 6px rgba(0,0,0,.35);max-width:260px}
+.legend b{font:600 13px var(--display);letter-spacing:.04em;display:block;margin-top:4px}
+.legend i{display:inline-block;width:18px;height:10px;margin-right:6px;vertical-align:-1px;border:2px solid}
+.legend i.ln{height:0;border-width:3px 0 0 0}
+
+/* findings */
+section{margin-top:44px}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:18px}
+.findings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.finding{display:flex;flex-direction:column;gap:10px}
+.finding .num{font:600 44px/1 var(--display);font-variant-numeric:tabular-nums}
+.finding p{font-size:14px}
+.L1{--accent:var(--water)}.L2{--accent:var(--laterite)}.L3{--accent:var(--forest)}
+.finding .num{color:var(--accent)}
+.finding .bar{height:4px;background:var(--accent);width:48px}
+@media (max-width:900px){.findings{grid-template-columns:1fr}}
+
+/* compare */
+.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.compare-grid{grid-template-columns:1fr}}
+figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.cmp{position:relative;overflow:hidden;border-radius:4px;background:var(--map);aspect-ratio:2000/1269;max-width:100%;user-select:none;touch-action:pan-y}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.cmp .after{clip-path:inset(0 0 0 var(--pos,50%))}
+.cmp .handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.6);pointer-events:none}
+.cmp .handle::after{content:"";position:absolute;top:50%;left:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.5)}
+.cmp input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cmp input[type=range]:focus-visible + .handle{background:var(--alert)}
+figcaption{font-size:13px;color:var(--muted)}
+figcaption b{color:var(--ink);font-weight:600}
+.single img{width:100%;border-radius:4px;display:block}
+
+/* methods */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 14px var(--display);letter-spacing:.04em;background:color-mix(in srgb,var(--bg) 60%,var(--panel))}
+tr:last-child td{border-bottom:0}
+td .chip{margin-right:4px}
+.limits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;padding:0;margin:0;list-style:none}
+.limits li{padding-left:16px;border-left:3px solid var(--alert);font-size:14px}
+@media (max-width:800px){.limits{grid-template-columns:1fr}}
+
+/* author */
+.author{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:24px}
+.author .contact{display:flex;flex-direction:column;gap:10px}
+.copyrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.copyrow code{font:500 14px var(--mono);padding:4px 8px;background:var(--bg);border-radius:4px;user-select:all}
+.copyrow button{font:500 12px var(--mono);background:none;border:1px solid var(--line);border-radius:4px;padding:4px 8px;cursor:pointer;color:var(--ink)}
+.bio p+p{margin-top:10px}
+.bio{max-width:68ch;font-size:14.5px}
+@media (max-width:800px){.author{grid-template-columns:1fr}}
+footer{margin-top:28px;font-size:12px;color:var(--muted)}
+.ews-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px}
+.score-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.ews-grid,.score-grid{grid-template-columns:1fr}}
+table.ews-t{min-width:0}
+.lvl{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:3px;color:#111;white-space:nowrap}
+.lvl.none{background:var(--line);color:var(--ink)}.lvl.watch{background:#F2D24B}.lvl.warning{background:#F08A2B}.lvl.alert{background:#D93A2B;color:#fff}
+.ok{color:var(--forest)}.stale{color:var(--laterite);font-weight:600}
+.chart{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px}
+.chart svg{display:block;width:100%;height:auto}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+select{font:13px var(--sans);padding:3px 6px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:4px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Regional environmental impact map · Nigeria · status 4 Oct 2026</div>
+    <h1>Nigeria Environmental Impact Map</h1>
+    <p class="lede">Three risk layers checked against satellite evidence: flash floods at Mokwa and Osogbo, gully erosion in Imo State, and canopy loss in the last southern rainforest blocks. Every polygon on the map comes from a measurement. Where the evidence does not exist yet, the page says so.</p>
+  </div>
+  <div class="byline">
+    <b>Designed by Mr. Dinar Wali</b>
+    Geospatial Computational Researcher<br>
+    RegenX.eco · <span class="mono">dinar.wali@regenx.eco</span>
+  </div>
+</header>
+
+<div class="mapblock">
+  <div>
+    <div id="map" role="region" aria-label="Interactive map of Nigeria with three risk layers"></div>
+    <div class="toggles" aria-label="Layer toggles">
+      <label><input type="checkbox" id="t-l1" checked> <span class="sw" style="border-color:#2BB8F0"></span> Layer 1 · Floods</label>
+      <label><input type="checkbox" id="t-l2" checked> <span class="sw" style="border-color:#FF3BD4"></span> Layer 2 · Gullies</label>
+      <label><input type="checkbox" id="t-l3" checked> <span class="sw" style="border-color:#FF3030"></span> Layer 3 · Canopy loss</label>
+      <label><input type="checkbox" id="t-img" checked> Sentinel-2 site imagery</label>
+    </div>
+  </div>
+  <aside class="side">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-l1" aria-selected="true" aria-controls="pane-l1" class="L1">1 · Floods</button>
+      <button role="tab" id="tab-l2" aria-selected="false" aria-controls="pane-l2" class="L2">2 · Gullies</button>
+      <button role="tab" id="tab-l3" aria-selected="false" aria-controls="pane-l3" class="L3">3 · Forests</button>
+    </div>
+
+    <div class="pane" id="pane-l1" role="tabpanel" aria-labelledby="tab-l1">
+      <div class="site">
+        <h3>Mokwa, Niger State <span class="chip ok">verified</span></h3>
+        <p>Flash flood, night of 28–29 May 2025. Reported deaths rose from 151 (state emergency agency, 1 June) to over 200, with hundreds missing.</p>
+        <dl class="kv">
+          <dt>Flood scour mapped</dt><dd>78.3 ha (S2 21 → 31 May)</dd>
+          <dt>Scour ends</dt><dd>13 m above rail embankment</dd>
+          <dt>Woodland cleared</dt><dd>26.5 ha, Mar 2025 (pre-flood)</dd>
+          <dt>Rain, 48 h (IMERG)</dt><dd>≤ 34 mm within 30 km</dd>
+          <dt>Annual max day 2001–24</dt><dd>29–102 mm</dd>
+          <dt>Groundsource</dt><dd>74.8 km² event, 28–31 May</dd>
+        </dl>
+        <p class="muted" style="font-size:13px">Satellite rainfall was below every year's annual-maximum day, which points to the reported dam and embankment failure as the amplifier rather than record rain.</p>
+        <button class="fly" data-fly="5.0505,9.3050,14">Fly to Mokwa →</button>
+      </div>
+      <div class="site">
+        <h3>Osogbo, Osun State <span class="chip warn">partial</span></h3>
+        <p>Osun River overflow, Tue 29 Sep 2026 (Ijetu, Aregbe/Abija, Koledowo, Zone 10, Baruwa Estate).</p>
+        <dl class="kv">
+          <dt>Rain 28 Sep (IMERG)</dt><dd>49.3 mm, after 48 mm in 7 d</dd>
+          <dt>Radar 28 Sep 05:28</dt><dd>6.5 ha water vs 0.3–0.6 ha</dd>
+          <dt>Floodplain ≤3 m HAND</dt><dd>1,534 ha</dd>
+          <dt>Built-up inside it</dt><dd>186 ha</dd>
+          <dt>Optical since 13 Sep</dt><dd>99.6–99.9 % cloud</dd>
+        </dl>
+        <p class="muted" style="font-size:13px">The last radar pass was the day before the reported flood. The next passes are 4 and 10 Oct. Groundsource ends 3 Feb 2026, so this flood is not in it; the map shows 58 earlier news-located floods here instead.</p>
+        <button class="fly" data-fly="4.5420,7.7700,13">Fly to Osogbo →</button>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-l2" role="tabpanel" aria-labelledby="tab-l2" hidden>
+      <div class="site">
+        <h3>Brief point · Obolo, Isiala Mbano <span class="chip no">no gully seen</span></h3>
+        <p>Airbus VHR (15 Mar 2024) shows no active gully within about 2 km of 5.6412 N, 7.1955 E. The screen's hits there were 9 open-cast sand pits and 8 lake-shore pixels, which I rejected.</p>
+        <button class="fly" data-fly="7.1955,5.6412,13">Fly to brief point →</button>
+      </div>
+      <div class="site">
+        <h3>Obodo, Ideato North <span class="chip ok">verified</span></h3>
+        <dl class="kv">
+          <dt>Axis, head → fan</dt><dd>1,549 m</dd>
+          <dt>Bare area 2016</dt><dd>9.5 ha</dd>
+          <dt>Bare area 2024</dt><dd>26.0 ha (×2.7)</dd>
+          <dt>Distance from brief pt</dt><dd>29.6 km NW</dd>
+        </dl>
+        <button class="fly" data-fly="7.0560,5.8700,15">Fly to Ideato gully →</button>
+      </div>
+      <div class="site">
+        <h3>Okigwe escarpment <span class="chip ok">verified</span></h3>
+        <p>Several gullies cut into the sandstone scarp beside the town; bare headwalls in 2019 are still bare in 2025.</p>
+        <dl class="kv">
+          <dt>Longest axis</dt><dd>950 m</dd>
+          <dt>Incision (DEM)</dt><dd>8–18 m below surroundings</dd>
+          <dt>Distance from brief pt</dt><dd>~28 km NE</dd>
+        </dl>
+        <button class="fly" data-fly="7.3820,5.8270,15">Fly to Okigwe →</button>
+      </div>
+      <div class="site">
+        <h3>Wide screen, 30 km <span class="chip warn">candidates</span></h3>
+        <p>46 elongated, incised, bare features passed the DEM + Sentinel-2 screen. Two clusters are confirmed in VHR. The rest are drawn thin and pale as unverified.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-l3" role="tabpanel" aria-labelledby="tab-l3" hidden>
+      <div class="site">
+        <h3>Oban / Cross River <span class="chip no">accelerating</span></h3>
+        <dl class="kv">
+          <dt>Natural-forest loss in reserve</dt><dd>592 → 2,823 → 7,619 ha</dd>
+          <dt>(2011–15 → 16–20 → 21–25)</dt><dd></dd>
+          <dt>2025 alone</dt><dd>2,260 ha</dd>
+          <dt>Radar alerts 2026</dt><dd>2,651 ha to 23 Sep</dd>
+          <dt>New road in reserve</dt><dd>4.2 km, built 2025–26</dd>
+        </dl>
+        <button class="fly" data-fly="8.5360,5.3000,13">Fly to Oban →</button>
+      </div>
+      <div class="site">
+        <h3>Okomu <span class="chip no">new clearance</span></h3>
+        <dl class="kv">
+          <dt>Block inside Forest Reserve</dt><dd>163.0 ha</dd>
+          <dt>Radar-dated</dt><dd>Apr–Dec 2025</dd>
+          <dt>Distance to National Park</dt><dd>10.5 km</dd>
+          <dt>Reserve loss 2021–25</dt><dd>1,512 ha</dd>
+        </dl>
+        <button class="fly" data-fly="5.0721,6.3016,14">Fly to Okomu →</button>
+      </div>
+      <div class="site">
+        <h3>Omo <span class="chip warn">low confidence</span></h3>
+        <dl class="kv">
+          <dt>Reserve loss 2021–25</dt><dd>1,805 ha</dd>
+          <dt>2025</dt><dd>786 ha (up from 124)</dd>
+          <dt>Radar alerts 2026</dt><dd>2,064 ha to 23 Sep</dd>
+        </dl>
+        <p class="muted" style="font-size:13px">Omo is a plantation and farm mosaic; much of the "loss" may be rotation harvest. Hotspots here are flagged low confidence.</p>
+        <button class="fly" data-fly="4.3200,6.9000,12">Fly to Omo →</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section>
+  <div class="sechead"><h2>What the evidence says</h2><span class="eyebrow">one headline per layer</span></div>
+  <div class="findings">
+    <div class="finding L1"><div class="bar"></div><div class="num">≤ 34 mm</div><h3>Mokwa's rain was not extreme. The infrastructure failed.</h3><p>NASA IMERG recorded at most 34 mm in 48 h within 30 km of Mokwa. That is below the annual-maximum single day in every year from 2001 to 2024 (29–102 mm). The mapped flood scour runs straight to the railway embankment and stops 13 m above it, and 26.5 ha of riparian woodland upstream had been cleared two months earlier.</p></div>
+    <div class="finding L2"><div class="bar"></div><div class="num">× 2.7</div><h3>The brief's Imo point has no gully. Two active ones lie 28–30 km away.</h3><p>At Obolo the VHR shows pits and lake shore, not erosion. The screen found the real gullies at Obodo (Ideato North), where bare area grew from 9.5 ha in 2016 to 26.0 ha in 2024, and on the Okigwe escarpment.</p></div>
+    <div class="finding L3"><div class="bar"></div><div class="num">12.9×</div><h3>Loss inside the Oban reserve is accelerating fast.</h3><p>Natural-forest loss in the Oban Group Forest Reserve went from 592 ha (2011–15) to 7,619 ha (2021–25), almost 13 times higher. A 4.2 km road was cut into the reserve in 2025–26, and at Okomu a 163 ha block was cleared inside the reserve in 2025.</p></div>
+  </div>
+</section>
+
+<section id="ews">
+  <div class="sechead"><h2>Early warning: live status</h2><span class="eyebrow mono" id="ews-run">pipeline run —</span></div>
+  <p class="muted" style="max-width:80ch;margin-bottom:16px">Automated run combining WeatherNext 3 ensemble rain forecasts, NASA IMERG rainfall, Sentinel-1 radar and RADD forest alerts. Levels rise at once and drop only after two quieter runs. A late source is marked stale and never used.</p>
+  <div class="ews-grid">
+    <div><h3 style="margin-bottom:8px">Site levels</h3><div class="tablewrap"><table class="ews-t" id="ews-sites"><thead><tr><th>Site</th><th>Hazard</th><th>Level</th><th>Reason</th></tr></thead><tbody></tbody></table></div></div>
+    <div><h3 style="margin-bottom:8px">Data freshness</h3><div class="tablewrap"><table class="ews-t" id="ews-fresh"><thead><tr><th>Source</th><th>Latest data</th><th>Age</th><th>State</th></tr></thead><tbody></tbody></table></div>
+      <p class="muted" style="font-size:12.5px;margin-top:8px">Radar forest alerts are confirmed 2–6 weeks after cutting, so the latest 30 days are always undercounted.</p></div>
+  </div>
+
+  <div style="margin-top:28px">
+    <div class="chart-head"><h3 id="wn3-title">WeatherNext 3: 14-day rain forecast</h3>
+      <label class="mono" style="font-size:12px">Site <select id="wn3-site"></select></label></div>
+    <div id="wn3-chart" class="chart" role="img" aria-label="Daily rainfall forecast with ensemble envelope"></div>
+    <p class="muted" style="font-size:12.5px">Bars: ensemble-mean daily rain. Whisker: sum of hourly p10 to sum of hourly p90, an <b>envelope</b> wider than the true daily spread (WeatherNext 3 publishes percentiles, not members). Dashed line: 40 mm Watch threshold.</p>
+  </div>
+
+  <div class="sechead" style="margin-top:40px"><h2>Is it reliable? The scorecard</h2><span class="eyebrow">tests run 4 Oct 2026</span></div>
+  <div class="score-grid">
+    <figure>
+      <div id="osg-chart" class="chart" role="img" aria-label="WeatherNext 3 forecasts for Osogbo 28 Sep at each lead time versus observed 48 mm"></div>
+      <figcaption><b>Did WeatherNext 3 see the Osogbo rain coming?</b> Forecasts for 28 Sep 2026 from runs 7 days to 12 hours before. Observed: 48 mm (IMERG). The mean caught a wet day at half the amount; the envelope passed the 40 mm Watch line 6 days ahead.</figcaption>
+    </figure>
+    <div>
+      <h3 style="margin-bottom:8px">WeatherNext 3 vs observed rain (6 sites, 20 Sep–2 Oct)</h3>
+      <div class="tablewrap"><table class="ews-t" id="ver-t"><thead><tr><th>Lead</th><th>Error, WN3</th><th>Error, WN3 (IMERG-tuned)</th><th>Error, climatology</th><th>Warning rule (≥20 mm)</th><th>Watch rule (envelope ≥40 mm)</th></tr></thead><tbody></tbody></table></div>
+      <p class="muted" style="font-size:12.5px;margin-top:6px">Error = mean absolute error in mm/day. Hits = heavy days (≥20 mm observed) caught; FA = false alarms on other days. Two weeks of data: a first check, not a final score.</p>
+    </div>
+  </div>
+  <div class="score-grid" style="margin-top:22px">
+    <div>
+      <h3 style="margin-bottom:8px">Rain alone is a weak flood trigger</h3>
+      <div class="tablewrap"><table class="ews-t" id="bt-t"><thead><tr><th>Rain ≥ (mm, 1 day)</th><th>Floods caught</th><th>Normal days flagged</th></tr></thead><tbody></tbody></table></div>
+      <p class="muted" style="font-size:12.5px;margin-top:6px" id="bt-note"></p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:8px">Google flood model: published skill in Nigeria</h3>
+      <div class="tablewrap"><table class="ews-t" id="fh-t"><thead><tr><th>River gauge</th><th>Google NSE</th><th>GloFAS NSE</th><th>Google KGE</th><th>GloFAS KGE</th></tr></thead><tbody></tbody></table></div>
+      <p class="muted" style="font-size:12.5px;margin-top:6px">From Nearing et al., <i>Nature</i> 2024 (hindcast 1980–2021, model not trained on these gauges). 1 = perfect, 0 = no better than the average flow. All 8 Nigerian test gauges are in the north (Kano, Jigawa, Yobe); none covers our sites. Live Flood Hub forecasts need Google's API approval (waitlist submitted separately).</p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="sechead"><h2>Before and after</h2><span class="eyebrow">Google Earth Pro, maximum resolution 8192 × 5199 · drag to compare</span></div>
+  <div class="compare-grid">
+    <figure>
+      <div class="cmp"><img src="img/Mokwa_PRE_2024-03-26.jpg" alt="Mokwa before the flood, 26 March 2024"><img class="after" src="img/Mokwa_POST_2025-06-08.jpg" alt="Mokwa ten days after the flood, 8 June 2025"><input type="range" min="0" max="100" value="50" id="cmp-mokwa" aria-label="Compare Mokwa before and after"><span class="handle"></span></div>
+      <figcaption><b>Mokwa</b> · 26 Mar 2024 → 8 Jun 2025 (Airbus). Cyan: Sentinel-2 flood scour. Green dot: woodland cleared Mar 2025.</figcaption>
+    </figure>
+    <figure>
+      <div class="cmp"><img src="img/Imo_IdeatoN_Gully_PRE_2016-01-24.jpg" alt="Ideato North gully, January 2016"><img class="after" src="img/Imo_IdeatoN_Gully_POST_2024-03-12.jpg" alt="Ideato North gully, March 2024"><input type="range" min="0" max="100" value="50" id="cmp-ideato" aria-label="Compare Ideato gully 2016 and 2024"><span class="handle"></span></div>
+      <figcaption><b>Obodo, Ideato North</b> · 24 Jan 2016 → 12 Mar 2024. Bare gully area 9.5 → 26.0 ha.</figcaption>
+    </figure>
+    <figure>
+      <div class="cmp"><img src="img/Imo_Okigwe_PRE_2019-12-27.jpg" alt="Okigwe gullies, December 2019"><img class="after" src="img/Imo_Okigwe_POST_2025-02-13.jpg" alt="Okigwe gullies, February 2025"><input type="range" min="0" max="100" value="50" id="cmp-okigwe" aria-label="Compare Okigwe gullies 2019 and 2025"><span class="handle"></span></div>
+      <figcaption><b>Okigwe escarpment</b> · 27 Dec 2019 (Maxar) → 13 Feb 2025 (Airbus). Headwalls stay bare: still active.</figcaption>
+    </figure>
+    <figure>
+      <div class="cmp"><img src="img/Okomu_PRE_2024-01-18.jpg" alt="Okomu forest, January 2024"><img class="after" src="img/Okomu_POST_S2_2025-26.jpg" alt="Okomu clearance, Sentinel-2 2025 to 2026"><input type="range" min="0" max="100" value="50" id="cmp-okomu" aria-label="Compare Okomu 2024 and 2025-26"><span class="handle"></span></div>
+      <figcaption><b>Okomu Forest Reserve</b> · 18 Jan 2024 (Airbus VHR) → Nov 2025–Mar 2026 (Sentinel-2, 10 m; Google Earth has nothing newer). 163 ha cleared.</figcaption>
+    </figure>
+    <figure class="single">
+      <img src="img/Oban_2022-05-03.jpg" alt="Oban sector annotated, 3 May 2022">
+      <figcaption><b>Oban sector</b> · 3 May 2022 (Maxar), newest clear VHR. Red: loss clusters 2023–26. Orange: road cut after this image (seen in Sentinel-2 2025–26).</figcaption>
+    </figure>
+    <figure class="single">
+      <img src="img/Osogbo_LATEST_2023-01-24.jpg" alt="Osogbo floodplain exposure on 24 January 2023 imagery">
+      <figcaption><b>Osogbo</b> · 24 Jan 2023 is the newest VHR. No post-flood VHR or cloud-free optical exists yet, so this view shows the exposure: floodplain, built-up land inside it, and radar water from 28 Sep.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Data sources and how each was used</h2><span class="eyebrow">all open data · re-runnable</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Source</th><th>Provider</th><th>Used for</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Google Earth Pro historical VHR</td><td>Airbus, Maxar, CNES</td><td>Pre/post comparison and visual verification at every site; 9 renders at 8192 × 5199</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>Sentinel-2 L2A (10 m)</td><td>ESA Copernicus</td><td>Mokwa scour (21 → 31 May 2025), gully bare-soil screen, forest frontier, Okomu post panel</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>Sentinel-1 GRD SAR (C-band)</td><td>ESA Copernicus</td><td>Osogbo open water (S1C, 28 Sep 2026); Mokwa pre/post backscatter (23 May / 4 Jun 2025)</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>RADD forest-disturbance alerts</td><td>Wageningen Univ. (Sentinel-1)</td><td>2025–26 canopy loss through 23 Sep 2026; dating the Okomu clearance</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>Groundsource 2026</td><td>Google Research</td><td>News-derived flood events: Mokwa 28–31 May 2025 confirmed; Osogbo history (58 records); archive ends 3 Feb 2026</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>GPM IMERG V07</td><td>NASA Earthdata</td><td>Event rainfall and 2001–2024 annual-maximum climatology at both flood sites</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>EMIT L2A reflectance (imaging spectrometer)</td><td>NASA / JPL</td><td>Imo gully screen: 14 overpasses, only 22 Dec 2024 partly clear (62–100 % flagged over the gullies). Iron-oxide and kaolinite band depths only separated bare soil from forest; not decisive</td><td><span class="chip warn">limited</span></td></tr>
+      <tr><td>Hansen Global Forest Change v1.13</td><td>Univ. of Maryland</td><td>Annual tree-cover loss 2001–2025, masked to natural forest and non-oil-palm</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>Natural Forests of the World 2020; global oil-palm map</td><td>Google / WRI; BIOPAMA</td><td>Masks so plantation harvest is not counted as rainforest loss</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>Copernicus DEM GLO-30; MERIT Hydro (HAND, flow accumulation)</td><td>ESA; Univ. of Tokyo</td><td>Gully incision; floodplain exposure; flood-path drainage</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>ESA WorldCover; WDPA; OpenStreetMap</td><td>ESA; UNEP-WCMC; OSM</td><td>Built-up exposure; reserve boundaries; Mokwa railway line</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>WeatherNext 3 ensemble (0.1°, 15 days)</td><td>Google DeepMind via Earth Engine</td><td>Live rain forecasts (mean, p10–p90) for flood Watch/Warning; verified against IMERG and on the Osogbo 28 Sep event</td><td><span class="chip ok">used</span></td></tr>
+      <tr><td>Google Flood Hub / Flood Forecasting API</td><td>Google Research</td><td>Live river forecasts need API approval (pilot waitlist). Used now: the model's published Nigeria skill scores (Nature 2024)</td><td><span class="chip warn">pending access</span></td></tr>
+      <tr><td>"Ese model" (as named in the brief)</td><td>—</td><td>I could not identify a model by this name. If it means Google's AlphaEarth Satellite Embedding or an echo-state network (ESN), neither changes a finding here; an ESN hindcast in earlier RegenX work scored below a simple baseline, so it is not used as evidence</td><td><span class="chip no">not used</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Limits of this map</h2></div>
+  <ul class="limits">
+    <li>Osogbo has no post-flood image yet. Radar on 28 Sep shows the river already out of its channel, but the peak on 29 Sep was not observed.</li>
+    <li>The Mokwa scour inside the built-up core is hidden by roofs; the path through town is drawn as inferred.</li>
+    <li>IMERG is a 10 km product and can under-read a single convective storm. The "not extreme" finding is strong across 24 years but rests on one rainfall source.</li>
+    <li>Gully areas come from colour thresholds on two different sensors, and some stepped walls at Ideato may be engineering works.</li>
+    <li>RADD alerts can include selective logging and degradation, not only clear-cut. Omo figures are low confidence.</li>
+    <li>Reserve boundaries are WDPA polygons and may differ from gazetted lines on the ground.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="sechead"><h2>About the author</h2></div>
+  <div class="author">
+    <div class="contact">
+      <div class="eyebrow">Project designed by</div>
+      <h3 style="font-size:28px">Mr. Dinar Wali</h3>
+      <p>Geospatial Computational Researcher · Founder, RegenX.eco</p>
+      <div class="copyrow"><span class="muted">Email</span><code id="em">dinar.wali@regenx.eco</code><button type="button" data-copy="em">Copy</button></div>
+      <div class="copyrow"><span class="muted">LinkedIn</span><a href="https://www.linkedin.com/in/dinar-wali-621954102/" target="_blank" rel="noopener">linkedin.com/in/dinar-wali-621954102</a></div>
+      <p class="muted" style="font-size:13px">Founder, RegenX.eco | Geospatial Computational Modelling | Earth Observation, Terrain Hydrology &amp; Climate Risk | GLOF Early Warning · Blue Carbon · Agricultural Verification</p>
+    </div>
+    <div class="bio">
+      <div class="eyebrow" style="margin-bottom:10px">LinkedIn bio</div>
+      <p>I build geospatial computational models that measure what the ground is actually doing: where water goes, how land and coastlines are changing, and how much of that change is real.</p>
+      <p>I founded RegenX.eco in 2023 to turn open satellite archives into evidence that governments, lenders and developers can act on. The model combines terrain hydrology, multi-year Sentinel-1 and Sentinel-2 time series and climate records, and tests every result against documented events before it is delivered. It has been applied to more than 30 sites across Pakistan, the UAE, Nepal and China (Tibet), from glacial lake outburst flood early warning in Gilgit-Baltistan and Chitral to blue carbon on the Gulf coast, urban baselines and farm-level agricultural verification.</p>
+      <p>Reliability comes first in my work. Every number ships with its formula, inputs and limits, and when a model fails an honest test, I report the failure, because that is what makes the successful results credible.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Satellite data: ESA Copernicus, NASA Earthdata (GPM IMERG, EMIT, NASADEM), UMD, WUR, Google Research, UNEP-WCMC, OpenStreetMap contributors. VHR imagery viewed in Google Earth Pro © Airbus, Maxar Technologies, CNES. Analysis 4 Oct 2026 · RegenX.eco Geospatial Computational Model.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+(function(){
+  // tabs
+  const tabs=[...document.querySelectorAll('[role=tab]')];
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>{x.setAttribute('aria-selected',x===t);document.getElementById(x.getAttribute('aria-controls')).hidden=(x!==t);});
+  }));
+  // compare sliders
+  document.querySelectorAll('.cmp').forEach(c=>{
+    const r=c.querySelector('input'); const set=()=>c.style.setProperty('--pos',r.value+'%'); r.addEventListener('input',set); set();
+  });
+  // copy
+  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+    const el=document.getElementById(b.dataset.copy); const txt=el.textContent;
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)};
+    try{navigator.clipboard.writeText(txt).then(done,()=>{sel(el)})}catch(e){sel(el)}
+    function sel(n){const r=document.createRange();r.selectNodeContents(n);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+  }));
+
+  if(!window.L){document.getElementById('map').textContent='Map library failed to load.';return;}
+  const map=L.map('map',{crs:L.CRS.EPSG4326,zoomSnap:0.25,minZoom:5,maxZoom:17,attributionControl:false}).setView([8.6,6.6],6);
+  L.control.scale({imperial:false}).addTo(map);
+
+  const imgLayer=L.layerGroup().addTo(map);
+  fetch('overlays.json').then(r=>r.json()).then(o=>{
+    L.imageOverlay('base_nigeria.jpg',o.base,{opacity:1}).addTo(map).bringToBack();
+    for(const k of ['mokwa','osogbo','imo_okigwe','imo_ideato','imo_point','oban','omo','okomu']){
+      L.imageOverlay('s2_'+k+'.jpg',o[k],{opacity:1}).addTo(imgLayer);
+    }
+  });
+  fetch('data/nigeria.json').then(r=>r.json()).then(g=>L.geoJSON(g,{style:{color:'#fff',weight:1.5,fill:false,opacity:.8},interactive:false}).addTo(map));
+
+  const C={observed_scour:['#2BE8FF',2,.15],flood_path_observed:['#2B6BFF',4],flood_path_inferred:['#7FB2FF',3,0,'6 6'],exposure:['#FFE600',1.5,.12],exposed_builtup:['#FF8000',1,.5],sar_water:['#2BE8FF',2,.8],groundsource:['#F2E205',2,0],railway:['#222',3],cleared_woodland:['#2EAA4A',2,.3],
+    verified_gully:['#FF3BD4',2.5,.25],gully_axis:['#FF2020',3],gully_candidate:['#FF9AEA',1,0],gully_axis_unverified:['#FF9AEA',1],
+    reserve:['#55FF00',2.5,0],national_park:['#00B000',2,0,'5 4'],inner_edge_0_2km:['#AAFF00',1,0,'2 4'],outside_ring_0_5km:['#FFFFAA',1,0,'2 4'],canopy_loss_hotspot:['#FF3030',1.2,.35],new_road:['#FFA500',4],new_clearance:['#FFA500',3,.35]};
+  const DOT={centre:'#FFFFFF',groundsource:'#F2E205',breach:'#E03030',clearing:'#2EAA4A',gully_head:'#E03030',sediment_fan:'#FF8C00',excavation_pit:'#FF8C00',rejected_shoreline:'#888',unverified_candidate:'#FF9AEA'};
+  function label(p){
+    if(p.name) return p.name;
+    if(p.kind==='canopy_loss_hotspot') return 'Canopy-loss cluster: '+p.ha+' ha lost (Hansen 2023–25: '+p.loss_hansen_2023_25_ha+' ha; RADD 2025–26: '+p.radd_2025_26_ha+' ha)';
+    return p.kind.replace(/_/g,' ');
+  }
+  function popup(p){
+    const skip=new Set(['layer','name','kind','uuid']);
+    const rows=Object.entries(p).filter(([k,v])=>!skip.has(k)&&v!==null&&v!=='').map(([k,v])=>'<tr><td style="color:var(--muted);padding-right:10px">'+k.replace(/_/g,' ')+'</td><td class="mono">'+v+'</td></tr>').join('');
+    return '<b>'+label(p)+'</b>'+(rows?'<table style="margin-top:6px;font-size:12px">'+rows+'</table>':'');
+  }
+  function mk(url,group){
+    return fetch(url).then(r=>r.json()).then(g=>L.geoJSON(g,{
+      style:f=>{const s=C[f.properties.kind]||['#fff',1,0];return {color:s[0],weight:s[1],fillColor:s[0],fillOpacity:s[2]||0,opacity:.95,dashArray:s[3]||null}},
+      pointToLayer:(f,ll)=>L.circleMarker(ll,{radius:f.properties.kind==='centre'?8:5,color:'#111',weight:1.5,fillColor:DOT[f.properties.kind]||'#fff',fillOpacity:1}),
+      onEachFeature:(f,l)=>l.bindPopup(popup(f.properties),{maxWidth:320})
+    }).addTo(group));
+  }
+  const g1=L.layerGroup().addTo(map),g2=L.layerGroup().addTo(map),g3=L.layerGroup().addTo(map);
+  mk('data/L3.json',g3).then(()=>mk('data/L2.json',g2)).then(()=>mk('data/L1.json',g1));
+
+  const tog=(id,layer)=>document.getElementById(id).addEventListener('change',e=>e.target.checked?map.addLayer(layer):map.removeLayer(layer));
+  tog('t-l1',g1);tog('t-l2',g2);tog('t-l3',g3);tog('t-img',imgLayer);
+
+  const leg=L.control({position:'bottomright'});
+  leg.onAdd=()=>{const d=L.DomUtil.create('div','legend');d.innerHTML=
+    '<b>Layer 1 · Floods</b><i style="border-color:#2BE8FF;background:rgba(43,232,255,.2)"></i>Scour / radar water<br><i class="ln" style="border-color:#2B6BFF"></i>Flood path<br><i style="border-color:#FFE600"></i>Floodplain ≤3 m HAND<br><i style="border-color:#FF8000;background:rgba(255,128,0,.5)"></i>Built-up in floodplain'+
+    '<b>Layer 2 · Gullies</b><i style="border-color:#FF3BD4;background:rgba(255,59,212,.25)"></i>Verified gully<br><i style="border-color:#FF9AEA"></i>Unverified candidate'+
+    '<b>Layer 3 · Forests</b><i style="border-color:#FF3030;background:rgba(255,48,48,.35)"></i>Canopy-loss cluster<br><i style="border-color:#FFA500;background:rgba(255,165,0,.35)"></i>New road / clearance<br><i style="border-color:#55FF00"></i>Forest reserve';
+    L.DomEvent.disableClickPropagation(d);return d};
+  leg.addTo(map);
+
+  document.querySelectorAll('[data-fly]').forEach(b=>b.addEventListener('click',()=>{
+    const [lon,lat,z]=b.dataset.fly.split(',').map(Number); map.flyTo([lat,lon],z,{duration:1.2});
+    document.getElementById('map').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }));
+})();
+</script>
+<script>
+(function(){
+  const fmtAge=h=>h==null?'—':(h<48?h.toFixed(0)+' h':(h/24).toFixed(1)+' d');
+  const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const NAMES={'flood:mokwa':'Mokwa','flood:osogbo':'Osogbo','erosion:okigwe':'Okigwe gullies','erosion:ideato':'Ideato North gully','forest:oban':'Oban reserve','forest:omo':'Omo reserve','forest:okomu':'Okomu reserve'};
+  const SRC={wn3:'WeatherNext 3 (rain forecast)',imerg:'NASA IMERG (rain observed)',radd:'RADD radar forest alerts','s1:osogbo':'Sentinel-1 radar, Osogbo'};
+  fetch('data/ews.json').then(r=>r.json()).then(D=>{
+    const st=D.status; document.getElementById('ews-run').textContent='pipeline run '+st.run_utc.replace('T',' ').replace('Z',' UTC');
+    const sb=document.querySelector('#ews-sites tbody');
+    for(const [k,v] of Object.entries(st.sites)){
+      sb.insertAdjacentHTML('beforeend',`<tr><td>${NAMES[k]||k}</td><td>${v.kind}</td><td><span class="lvl ${v.level}">${v.level==='none'?'normal':v.level}</span>${v.held?' <span class="muted mono" style="font-size:11px">held</span>':''}</td><td style="font-size:12.5px">${esc(v.why.join('; ')||'—')}</td></tr>`);
+    }
+    const fb=document.querySelector('#ews-fresh tbody');
+    for(const [k,v] of Object.entries(st.freshness)){
+      fb.insertAdjacentHTML('beforeend',`<tr><td>${SRC[k]||k}</td><td class="mono" style="font-size:12px">${v.time?v.time.replace('T',' ').slice(0,16):'—'}</td><td class="mono">${fmtAge(v.age_h)}</td><td class="${v.fresh?'ok':'stale'}">${v.fresh?'fresh':'STALE'}${v.error?' · error':''}</td></tr>`);
+    }
+    // WN3 chart
+    const sel=document.getElementById('wn3-site');
+    for(const [k,v] of Object.entries(D.wn3.sites)) sel.insertAdjacentHTML('beforeend',`<option value="${k}">${esc(v.name)}</option>`);
+    sel.value='osogbo';
+    const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    function bars(k){
+      const rows=D.wn3.sites[k].daily, W=760,H=260,L=44,R=14,T=16,B=36;
+      const ymax=Math.max(50,...rows.map(r=>r.hi_env))*1.1, bw=(W-L-R)/rows.length;
+      const Y=v=>T+(H-T-B)*(1-v/ymax);
+      let g='';
+      for(let t=0;t<=ymax;t+=ymax>100?25:10) g+=`<line x1="${L}" x2="${W-R}" y1="${Y(t)}" y2="${Y(t)}" stroke="${css('--line')}"/><text x="${L-6}" y="${Y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${t}</text>`;
+      rows.forEach((r,i)=>{const x=L+i*bw+bw*0.2,w=bw*0.6,cx=x+w/2;
+        g+=`<rect x="${x}" y="${Y(r.mean)}" width="${w}" height="${Y(0)-Y(r.mean)}" fill="${css('--water')}" rx="2"><title>${r.date}: mean ${r.mean} mm, envelope ${r.lo_env}–${r.hi_env} mm</title></rect>`;
+        g+=`<line x1="${cx}" x2="${cx}" y1="${Y(r.hi_env)}" y2="${Y(r.lo_env)}" stroke="${css('--ink')}" stroke-width="1.2"/><line x1="${cx-4}" x2="${cx+4}" y1="${Y(r.hi_env)}" y2="${Y(r.hi_env)}" stroke="${css('--ink')}"/>`;
+        if(i%2===0) g+=`<text x="${cx}" y="${H-B+16}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${r.date.slice(5)}</text>`;});
+      g+=`<line x1="${L}" x2="${W-R}" y1="${Y(40)}" y2="${Y(40)}" stroke="${css('--alert')}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${W-R}" y="${Y(40)-5}" text-anchor="end" font-size="11" fill="${css('--alert')}">Watch 40 mm</text>`;
+      g+=`<text x="${L}" y="${T-4}" font-size="11" fill="${css('--muted')}">mm/day</text>`;
+      document.getElementById('wn3-chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}">${g}</svg>`;
+      document.getElementById('wn3-title').textContent='WeatherNext 3: 14-day rain forecast · run '+D.wn3.init.replace('T',' ').slice(0,16)+' UTC';
+    }
+    sel.addEventListener('change',()=>bars(sel.value)); bars('osogbo');
+    // Osogbo lead-time chart
+    (function(){const F=D.osogbo.forecasts, obs=D.osogbo.obs_imerg_mm, W=760,H=250,L=44,R=20,T=16,B=40;
+      const ymax=75, X=i=>L+(W-L-R)*(i+0.5)/F.length, Y=v=>T+(H-T-B)*(1-v/ymax); let g='';
+      for(let t=0;t<=ymax;t+=25) g+=`<line x1="${L}" x2="${W-R}" y1="${Y(t)}" y2="${Y(t)}" stroke="${css('--line')}"/><text x="${L-6}" y="${Y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${t}</text>`;
+      g+=`<line x1="${L}" x2="${W-R}" y1="${Y(obs)}" y2="${Y(obs)}" stroke="${css('--laterite')}" stroke-width="2"/><text x="${L+4}" y="${Y(obs)-6}" font-size="11.5" font-weight="600" fill="${css('--laterite')}">Observed ${obs} mm</text>`;
+      g+=`<line x1="${L}" x2="${W-R}" y1="${Y(40)}" y2="${Y(40)}" stroke="${css('--alert')}" stroke-dasharray="5 4"/>`;
+      F.forEach((f,i)=>{const x=X(i);
+        g+=`<line x1="${x}" x2="${x}" y1="${Y(f.hi_env)}" y2="${Y(f.mean)}" stroke="${css('--ink')}" stroke-width="1.2"/><line x1="${x-5}" x2="${x+5}" y1="${Y(f.hi_env)}" y2="${Y(f.hi_env)}" stroke="${css('--ink')}"/>`;
+        g+=`<circle cx="${x}" cy="${Y(f.mean)}" r="5" fill="${css('--water')}"><title>run ${f.init}: mean ${f.mean} mm, envelope ${f.hi_env} mm</title></circle>`;
+        g+=`<text x="${x}" y="${H-B+16}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${f.lead_days} d</text>`;});
+      g+=`<text x="${(W+L)/2}" y="${H-6}" text-anchor="middle" font-size="11" fill="${css('--muted')}">days before 28 Sep · dot = ensemble mean · top tick = upper envelope</text>`;
+      document.getElementById('osg-chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}">${g}</svg>`;})();
+    const vt=document.querySelector('#ver-t tbody');
+    D.verification.forEach(v=>vt.insertAdjacentHTML('beforeend',`<tr><td>Day ${v.lead}</td><td class="mono">${v.mae_wn3}</td><td class="mono">${v.mae_wn3_imerg}</td><td class="mono">${v.mae_clim}</td><td class="mono">${v.warn_hits}/${v.heavy_days} hits · ${v.warn_fa}/${v.non_heavy} FA</td><td class="mono">${v.watch_hits}/${v.heavy_days} hits · ${v.watch_fa}/${v.non_heavy} FA</td></tr>`));
+    const bt=document.querySelector('#bt-t tbody');
+    D.backtest.thresholds.forEach(t=>bt.insertAdjacentHTML('beforeend',`<tr><td class="mono">${t.t}</td><td class="mono">${Math.round(t.hit*100)}%</td><td class="mono">${Math.round(t.false_alarm*100)}%</td></tr>`));
+    document.getElementById('bt-note').textContent=`${D.backtest.n_events} news-reported Nigerian floods (Google Groundsource, 2001–2026) vs ${D.backtest.n_controls} same-place, same-season control days, NASA IMERG rain. AUC ${D.backtest.auc_r1} (0.5 = coin toss). So rain alone only raises a Watch; a Warning also needs exposed homes, and an Alert needs radar-observed water.`;
+    const fh=document.querySelector('#fh-t tbody');
+    D.floodhub.forEach(r=>fh.insertAdjacentHTML('beforeend',`<tr><td>${r.gauge}</td><td class="mono">${r.google_nse}</td><td class="mono">${r.glofas_nse}</td><td class="mono">${r.google_kge}</td><td class="mono">${r.glofas_kge}</td></tr>`));
+  }).catch(e=>{document.getElementById('ews-run').textContent='status file failed to load';});
+})();
+</script>
+
+</body>
+</html>

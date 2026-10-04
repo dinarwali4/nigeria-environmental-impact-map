@@ -1,0 +1,11 @@
+earthengine-api>=1.0
+certifi
+numpy
+scipy
+scikit-image
+rasterio
+shapely
+pyproj
+Pillow
+netCDF4
+pytest

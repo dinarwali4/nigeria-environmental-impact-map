@@ -1,0 +1,69 @@
+{
+ "obs_imerg_mm": 48.2,
+ "forecasts": [
+  {
+   "init": "2026-09-21T00:00:00Z",
+   "lead_days": 7.0,
+   "hours": 24,
+   "mean": 11.3,
+   "hi_env": 27.1,
+   "imerg_flavour": 10.8
+  },
+  {
+   "init": "2026-09-22T00:00:00Z",
+   "lead_days": 6.0,
+   "hours": 24,
+   "mean": 17.7,
+   "hi_env": 48.0,
+   "imerg_flavour": 12.6
+  },
+  {
+   "init": "2026-09-23T00:00:00Z",
+   "lead_days": 5.0,
+   "hours": 24,
+   "mean": 16.5,
+   "hi_env": 43.0,
+   "imerg_flavour": 13.1
+  },
+  {
+   "init": "2026-09-24T00:00:00Z",
+   "lead_days": 4.0,
+   "hours": 24,
+   "mean": 16.8,
+   "hi_env": 43.9,
+   "imerg_flavour": 13.7
+  },
+  {
+   "init": "2026-09-25T00:00:00Z",
+   "lead_days": 3.0,
+   "hours": 24,
+   "mean": 18.8,
+   "hi_env": 51.1,
+   "imerg_flavour": 18.0
+  },
+  {
+   "init": "2026-09-26T00:00:00Z",
+   "lead_days": 2.0,
+   "hours": 24,
+   "mean": 23.9,
+   "hi_env": 56.2,
+   "imerg_flavour": 23.5
+  },
+  {
+   "init": "2026-09-27T00:00:00Z",
+   "lead_days": 1.0,
+   "hours": 24,
+   "mean": 23.6,
+   "hi_env": 51.8,
+   "imerg_flavour": 24.1
+  },
+  {
+   "init": "2026-09-27T12:00:00Z",
+   "lead_days": 0.5,
+   "hours": 24,
+   "mean": 26.7,
+   "hi_env": 67.4,
+   "imerg_flavour": 33.9
+  }
+ ]
+}

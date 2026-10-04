@@ -1,0 +1,16 @@
+from eeinit import ee
+import json
+O=ee.Geometry.Point(4.5624,7.7827); aoi=O.buffer(9000).bounds()
+mh=ee.Image('MERIT/Hydro/v1_0_1'); hand=mh.select('hnd'); upa=mh.select('upa')
+near=upa.gt(50).selfMask().fastDistanceTransform(30).sqrt().multiply(ee.Image.pixelArea().sqrt()).lt(600)
+S1=ee.ImageCollection('COPERNICUS/S1_GRD').filterBounds(aoi).filter(ee.Filter.eq('relativeOrbitNumber_start',95))
+ref=S1.filterDate('2026-06-01','2026-09-05').select('VV').median()
+post=S1.filterDate('2026-09-28','2026-09-29').mosaic().select('VV').focal_median(30,'circle','meters')
+water=post.lt(-18).And(ref.gt(-18)).And(hand.lte(5)).And(near).selfMask()
+water=water.updateMask(water.connectedPixelCount(50).gte(4))
+v=water.reduceToVectors(geometry=aoi,scale=10,eightConnected=True,maxPixels=1e9).map(lambda f:f.set('ha',f.geometry().area(1).divide(1e4)))
+g=v.getInfo(); print('new water polys',len(g['features']),'ha',round(sum(f['properties']['ha'] for f in g['features']),2))
+json.dump(g,open('out/osogbo_s1_water_20260928.geojson','w'))
+# Osun river centreline proxy from upa>50 (for KML line)
+riv=upa.gt(50).selfMask().reduceToVectors(geometry=aoi,scale=90,eightConnected=True,maxPixels=1e9)
+json.dump(riv.getInfo(),open('out/osogbo_river_cells.geojson','w'))

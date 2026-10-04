@@ -1,0 +1,40 @@
+# Daily early-warning run. Inactive until two repository secrets are added:
+#   EE_SERVICE_ACCOUNT_KEY - JSON key of a Google service account registered for Earth Engine
+#   GOOGLE_CLOUD_PROJECT   - the Earth Engine-enabled Cloud project id
+name: ews-run
+on:
+  schedule: [{cron: "30 6 * * *"}]
+  workflow_dispatch:
+permissions: {contents: write}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Skip when no Earth Engine key
+        if: env.HAS_KEY != 'true'
+        run: echo "EE_SERVICE_ACCOUNT_KEY not set - live run skipped."
+      - if: env.HAS_KEY == 'true'
+        uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - if: env.HAS_KEY == 'true'
+        run: pip install earthengine-api certifi shapely pyproj
+      - if: env.HAS_KEY == 'true'
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+          EE_SERVICE_ACCOUNT_FILE: /tmp/ee-key.json
+          EE_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          printf '%s' "$EE_KEY" > /tmp/ee-key.json
+          python ews/wn3.py
+          python ews/pipeline.py
+          python ews/make_site_data.py
+          rm -f /tmp/ee-key.json
+      - if: env.HAS_KEY == 'true'
+        run: |
+          git config user.name "ews-bot"; git config user.email "ews-bot@users.noreply.github.com"
+          git add ews/status.json ews/wn3_latest.json data/ews.json
+          git commit -m "EWS run $(date -u +%F)" || echo "no change"
+          git push
