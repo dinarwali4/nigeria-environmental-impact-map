@@ -30,10 +30,10 @@ dinar.wali@regenx.eco · [LinkedIn](https://www.linkedin.com/in/dinar-wali-62195
 | Test | Result |
 |---|---|
 | Rain-only trigger, 700 Groundsource floods vs 2,100 control days | AUC **0.59**: rain alone is a weak trigger, so it may only raise a *Watch* |
-| WeatherNext 3 vs IMERG, 6 sites, 20 Sep–2 Oct 2026 | Day-1 error 5.6 mm vs 8.6 mm for climatology; little skill by day 2–3 |
+| WeatherNext 3 vs IMERG, 6 sites, 20 Sep–2 Oct 2026 | Day-1 error 5.6 mm (IMERG-tuned) and 7.9 mm (raw WN3) vs 8.6 mm for climatology; little skill by day 2–3 |
 | Warning rule (≥20 mm next 24 h) | 16/23 heavy-rain days caught, 9/115 false alarms |
 | Osogbo, 28 Sep 2026 (48 mm observed) | WN3 mean 24 mm at 1–2 days; upper envelope 48 mm already 6 days ahead |
-| Google flood model, published Nigeria skill | Positive NSE at 2 of 7 northern gauges; none near these sites |
+| Google flood model, published Nigeria skill | Positive NSE at 3 of 7 northern gauges; none near these sites |
 
 Rules (`ews/rules.py`): **Watch** = WN3 upper envelope ≥40 mm within 3 days · **Warning** = ≥20 mm next 24 h on a
 site with built-up floodplain · **Alert** = radar open water ≥3× baseline, image <72 h old. Levels rise at once
